@@ -48,15 +48,15 @@ func main() {
 	})))
 
 	// Добавление эндпоинтов аутентификации с использованием CORS middleware
-	http.Handle("/get-challenge", middlewares.CORS(http.HandlerFunc(controllers.GetChallengeHandler)))
-	http.Handle("/authenticate", middlewares.CORS(http.HandlerFunc(controllers.AuthenticateHandler)))
-	http.Handle("/teams", middlewares.CORS(http.HandlerFunc(teamController.GetTeamsHandler)))
-	http.Handle("/teams/members", middlewares.CORS(http.HandlerFunc(teamController.GetTeamMembersHandler)))
-	http.Handle("/teams/leave", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(teamController.LeaveTeamHandler))))
-	http.Handle("/me", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(controllers.MeHandler))))
-	http.Handle("/teams/create", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(teamController.CreateTeamHandler))))
-	http.Handle("/teams/join", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(teamController.JoinTeamHandler))))
-	http.Handle("/logout", middlewares.CORS(http.HandlerFunc(controllers.LogoutHandler)))
+	http.Handle("/api/get-challenge", middlewares.CORS(http.HandlerFunc(controllers.GetChallengeHandler)))
+	http.Handle("/api/authenticate", middlewares.CORS(http.HandlerFunc(controllers.AuthenticateHandler)))
+	http.Handle("/api/teams", middlewares.CORS(http.HandlerFunc(teamController.GetTeamsHandler)))
+	http.Handle("/api/teams/members", middlewares.CORS(http.HandlerFunc(teamController.GetTeamMembersHandler)))
+	http.Handle("/api/teams/leave", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(teamController.LeaveTeamHandler))))
+	http.Handle("/api/me", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(controllers.MeHandler))))
+	http.Handle("/api/teams/create", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(teamController.CreateTeamHandler))))
+	http.Handle("/api/teams/join", middlewares.CORS(middlewares.JWTAuth(http.HandlerFunc(teamController.JoinTeamHandler))))
+	http.Handle("/api/logout", middlewares.CORS(http.HandlerFunc(controllers.LogoutHandler)))
 
 	// Запуск HTTP-сервера
 	log.Printf("Server is running on %s", cfg.ServerAddress)
